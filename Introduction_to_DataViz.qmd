@@ -1,0 +1,361 @@
+---
+title: "Intro to Data Visualization in R"
+author: "Bolívar Aponte Rolón"
+ormat: 
+  revealjs:
+    footer: Introduction to Data Visualization in R
+    code-copy: true
+    code-link: true
+    #df-print: kable
+    slide-number: true
+    chalkboard: true
+    mouse-wheel: false
+    theme: default
+    logo: "logo.png"
+    height: 1080
+    width: 1920
+editor: visual
+execute: 
+  eval: true
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+## Your instructor
+
+::: columns
+::: {.column width="70%"}
+**Bolívar Aponte Rolón**
+
+![](/home/baponte/Box/CV_Resume/Bolivar_Aponte_Headshots_2022/Bolivar_Aponte-pbc-1959.jpg){width="5.00in"}
+
+PhD Candidate in Ecology and Evolutionary Biology
+:::
+
+::: {.column width="30%"}
+Topics of interest:
+
+-   Community ecology
+
+-   Fungal meta-genomics
+
+-   Bioinformatics and data science
+
+-   Organizer: Tulanians Who Enjoy R Coding
+:::
+:::
+
+## Introduction to `ggplot2`
+
+::: incremental
+In this workshop we will:
+
+-   Explore (briefly) the grammar of graphics
+
+-   Understand layer components and map aesthetics
+
+-   Interpret `ggplot2` documentation
+
+-   Create a layered plot
+
+<!-- -   Introduce function and syntax of visual elements -->
+::: callout-note
+The first segment of this presentation is based on University of Arizona's [CALS-workshop series: Foundations of `ggplot2`](https://github.com/cct-datascience/CALS-workshops/tree/main/20230605-foundations-ggplot2)
+:::
+
+:::
+
+# Popular visualizations
+
+::: columns
+::: column {.column width= "30%"}
+
+-   Bar plots
+
+-   Scatter plots
+
+-   Box plots
+
+-   Violin plots
+
+-   many more...
+:::
+
+::: {.column width = "70%"}
+
+Images HERE
+:::
+:::
+:::
+
+## What do they all have in common now days? - `ggplot2`
+
+:::
+
+# The grammar of graphics
+
+## What is a grammar?
+
+"The fundamental principles or rules of an art or science" - Oxford English Dictionary
+
+::: incremental
+-   reveal composition of complicated graphics
+
+-   strong foundation for understanding a range of graphics
+
+-   guide for well-formed or correct graphics
+:::
+
+::: callout-note
+See ["The Grammar of Graphics"](https://link.springer.com/book/10.1007/0-387-28695-0) by Leland Wilkinson (2005) and ["A Layered Grammar of Graphics"](https://vita.had.co.nz/papers/layered-grammar.html) by Hadley Wickham (2010)
+:::
+
+## Layered grammar of graphics
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| warning: false
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+
+library(palmerpenguins)
+library(ggplot2)
+library(dplyr)
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
+                     size = body_mass_g,
+                     color = species)) +
+  geom_point(alpha = 0.5) +
+  theme_classic(base_size = 16) +
+  scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  guides(size = "none",
+         color = "none")
+```
+:::
+
+::: {.column width="60%"}
+`ggplot2` builds complex plots one layer at a time.
+
+::: incremental
+-   What are the necessary components of a plot?
+
+-   What are necessary components of a layer?
+:::
+:::
+:::
+
+## Components of a plot
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| warning: false
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+
+library(palmerpenguins)
+library(ggplot2)
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
+                     size = body_mass_g,
+                     color = species)) +
+  geom_point(alpha = 0.5) +
+  theme_classic(base_size = 16) +
+  scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  guides(size = "none",
+         color = "none")
+```
+:::
+
+::: {.column width="60%"}
+A plot contains:
+
+::: incremental
+-   Data and aesthetic mapping
+
+-   Layer(s) containing geometric object(s) and statistical transformation(s)
+
+-   Scales
+
+-   Coordinate system
+
+-   (Optional) facets or themes
+:::
+:::
+:::
+
+## Components of a layer
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| warning: false
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+
+library(palmerpenguins)
+library(ggplot2)
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
+                     size = body_mass_g,
+                     color = species)) +
+  geom_point(alpha = 0.5) +
+  theme_classic(base_size = 16) +
+  scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  guides(size = "none",
+         color = "none")
+```
+:::
+
+::: {.column width="60%"}
+A layer contains:
+
+::: incremental
+-   Data with aesthetic mapping
+
+-   A statistical transformation, or *stat*
+
+-   A geometric object, or *geom*
+
+-   A position adjustment
+:::
+:::
+:::
+
+# Mapping data to aesthetics
+
+## What data inputs are needed?
+
+Data can be added to either the entire ggplot object or a particular layer.
+
+Input data must be a dataframe in 'tidy' format:
+
+::: incremental
+-   every column is a variable
+
+-   every row is an observation
+
+-   every cell is a single value
+:::
+
+::: callout-note
+See ["Tidy Data"](https://vita.had.co.nz/papers/tidy-data.html) by Wickham (2014) and the associated [vignette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html)
+:::
+
+## Example dataset - raw
+
+```{r}
+#| echo: false
+example <- penguins[c(1:2, 160:161, 283:284), c(1, 3:4, 6)]
+example
+```
+
+## Example dataset - mapped
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| warning: false
+#| echo: false
+#| fig-width: 4
+#| fig-height: 4
+library(palmerpenguins)
+library(ggplot2)
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
+                     size = body_mass_g,
+                     color = species)) +
+  geom_point(alpha = 0.5) +
+  theme_classic(base_size = 16) +
+  scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  guides(size = "none",
+         color = "none")
+```
+
+```{r}
+#| warning: false
+#| eval: false
+aes(x = bill_length_mm,
+    y = bill_depth_mm,
+    size = body_mass_g,
+    color = species)
+```
+:::
+
+::: {.column width="60%"}
+Variables mapped to aesthetic:
+
+```{r}
+#| echo: false
+library(dplyr)
+example <- penguins[c(1:2, 160:161, 283:284), c(1, 3:4, 6)]
+example %>%
+  rename(x = bill_length_mm,
+         y = bill_depth_mm,
+         Size = body_mass_g,
+         Color = species)
+```
+:::
+:::
+
+## Where to specify aesthetics?
+
+::: incremental
+-   Can be supplied to initial `ggplot()` call, in individual layers, or a combo
+
+-   `ggplot()` data and aesthetics are inherited, but can be overridden
+:::
+
+```{r}
+#| eval: false
+#| echo: false
+
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, 
+                     color = species)) +
+  geom_point()
+```
+
+```{r}
+#| eval: false
+#| echo: false
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
+  geom_point(aes(color = species))
+```
+
+```{r}
+#| eval: false
+#| echo: false
+ggplot() +
+  geom_point(data = penguins,
+             aes(x = body_mass_g, y = flipper_length_mm, color = species))
+```
+
+# Let's explore some visualizations
+
+## Download
+
+-   `ggplot2` 
+
+-   `palmerpenguins`
+
+-   `tidyverse` (includes `dplyr`)
+
+::: callout-tip
+How to install? Use command `install.packages()`
+:::
+
+
+## Box Plots {.smaller}
+
+## Bar Plots
+
+## Scatter Plots
+
+## Histograms
+
+## 
