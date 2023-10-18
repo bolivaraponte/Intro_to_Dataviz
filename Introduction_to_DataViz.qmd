@@ -3,7 +3,7 @@ title: "Intro to Data Visualization in R"
 author: "Bolívar Aponte Rolón"
 format: 
   revealjs:
-    footer: "Introduction to Data Visualization in R"
+    #footer: "Introduction to Data Visualization in R"
     code-copy: true
     code-link: true
     #df-print: kable
@@ -12,9 +12,9 @@ format:
     mouse-wheel: false
     theme: 
       - "custom.scss"
-    logo: "TUL_Logos_narrow.png"
-    height: 1080
-    width: 1920
+    #logo: "TUL_Logos_narrow.png"
+    #height: 1080
+    #width: 1920
 editor: visual
 execute: 
   eval: true
@@ -22,30 +22,6 @@ execute:
 editor_options: 
   chunk_output_type: console
 ---
-
-<!-- ## Your instructor -->
-
-<!-- ::: columns -->
-<!-- ::: {.column width="70%"} -->
-<!-- **Bolívar Aponte Rolón** -->
-
-<!-- ![](/home/baponte/Box/CV_Resume/Bolivar_Aponte_Headshots_2022/Bolivar_Aponte-pbc-1959.jpg){width="5.00in"} -->
-
-<!-- PhD Candidate in Ecology and Evolutionary Biology -->
-<!-- ::: -->
-
-<!-- ::: {.column width="30%"} -->
-<!-- Topics of interest: -->
-
-<!-- -   Community ecology -->
-
-<!-- -   Fungal meta-genomics -->
-
-<!-- -   Bioinformatics and data science -->
-
-<!-- -   Organizer: Tulanians Who Enjoy R Coding -->
-<!-- ::: -->
-<!-- ::: -->
 
 ## Introduction to `ggplot2`
 
@@ -57,20 +33,11 @@ In this workshop we will:
 -   Understand layer components and map aesthetics
 
 -   Create a layered plot
-
-<!-- -   Interpret `ggplot2` documentation -->
-
-<!-- -   Introduce function and syntax of visual elements -->
 :::
-
-
-
-
 
 ::: callout-note
 The first segment of this presentation is based on University of Arizona's [CALS-workshop series: Foundations of `ggplot2`](https://github.com/cct-datascience/CALS-workshops/tree/main/20230605-foundations-ggplot2)
 :::
-
 
 ## Popular visualizations
 
@@ -88,12 +55,38 @@ The first segment of this presentation is based on University of Arizona's [CALS
 -   many more...
 :::
 
-::: {.column width = "70%"}
-:::
+::: {.column width = "70%" layout="[[+1], [1],[-1]]"}
 
+```{r, barplot}
+library(palmerpenguins)
+library(ggplot2)
+library(dplyr)
+
+ggplot(penguins, aes(x = species, y = penguins$bill_length_mm)) +
+  geom_bar(stat = "identity", aes( fill = species), alpha = 0.7) +
+  theme_classic(base_size = 16) +
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  guides(size = "none",
+         fill = "none")
+
+```
+
+
+```{r, scatter plot}
+library(palmerpenguins)
+library(ggplot2)
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm,
+                     color = species)) +
+  geom_point(alpha = 0.8) +
+  theme_classic(base_size = 16) +
+  scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575"))
+  # guides(size = "none",
+  #        color = "none")
+```
 ::: callout-note
 ## What do they all have in common now days? - `ggplot2`
 :::
+
 :::
 
 ## The grammar of graphics
