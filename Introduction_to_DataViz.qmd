@@ -1,17 +1,18 @@
 ---
 title: "Intro to Data Visualization in R"
 author: "Bolívar Aponte Rolón"
-ormat: 
+format: 
   revealjs:
-    footer: Introduction to Data Visualization in R
+    footer: "Introduction to Data Visualization in R"
     code-copy: true
     code-link: true
     #df-print: kable
     slide-number: true
     chalkboard: true
     mouse-wheel: false
-    theme: default
-    logo: "logo.png"
+    theme: 
+      - "custom.scss"
+    logo: "TUL_Logos_narrow.png"
     height: 1080
     width: 1920
 editor: visual
@@ -22,29 +23,29 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Your instructor
+<!-- ## Your instructor -->
 
-::: columns
-::: {.column width="70%"}
-**Bolívar Aponte Rolón**
+<!-- ::: columns -->
+<!-- ::: {.column width="70%"} -->
+<!-- **Bolívar Aponte Rolón** -->
 
-![](/home/baponte/Box/CV_Resume/Bolivar_Aponte_Headshots_2022/Bolivar_Aponte-pbc-1959.jpg){width="5.00in"}
+<!-- ![](/home/baponte/Box/CV_Resume/Bolivar_Aponte_Headshots_2022/Bolivar_Aponte-pbc-1959.jpg){width="5.00in"} -->
 
-PhD Candidate in Ecology and Evolutionary Biology
-:::
+<!-- PhD Candidate in Ecology and Evolutionary Biology -->
+<!-- ::: -->
 
-::: {.column width="30%"}
-Topics of interest:
+<!-- ::: {.column width="30%"} -->
+<!-- Topics of interest: -->
 
--   Community ecology
+<!-- -   Community ecology -->
 
--   Fungal meta-genomics
+<!-- -   Fungal meta-genomics -->
 
--   Bioinformatics and data science
+<!-- -   Bioinformatics and data science -->
 
--   Organizer: Tulanians Who Enjoy R Coding
-:::
-:::
+<!-- -   Organizer: Tulanians Who Enjoy R Coding -->
+<!-- ::: -->
+<!-- ::: -->
 
 ## Introduction to `ggplot2`
 
@@ -55,21 +56,26 @@ In this workshop we will:
 
 -   Understand layer components and map aesthetics
 
--   Interpret `ggplot2` documentation
-
 -   Create a layered plot
 
+<!-- -   Interpret `ggplot2` documentation -->
+
 <!-- -   Introduce function and syntax of visual elements -->
+:::
+
+
+
+
+
 ::: callout-note
 The first segment of this presentation is based on University of Arizona's [CALS-workshop series: Foundations of `ggplot2`](https://github.com/cct-datascience/CALS-workshops/tree/main/20230605-foundations-ggplot2)
 :::
 
-:::
 
-# Popular visualizations
+## Popular visualizations
 
 ::: columns
-::: column {.column width= "30%"}
+::: {.column width= "30%"}
 
 -   Bar plots
 
@@ -83,17 +89,14 @@ The first segment of this presentation is based on University of Arizona's [CALS
 :::
 
 ::: {.column width = "70%"}
-
-Images HERE
-:::
-:::
 :::
 
+::: callout-note
 ## What do they all have in common now days? - `ggplot2`
-
+:::
 :::
 
-# The grammar of graphics
+## The grammar of graphics
 
 ## What is a grammar?
 
@@ -339,7 +342,7 @@ ggplot() +
 
 ## Download
 
--   `ggplot2` 
+-   `ggplot2`
 
 -   `palmerpenguins`
 
@@ -348,7 +351,6 @@ ggplot() +
 ::: callout-tip
 How to install? Use command `install.packages()`
 :::
-
 
 ## Box Plots {.smaller}
 
