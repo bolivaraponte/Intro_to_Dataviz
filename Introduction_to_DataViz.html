@@ -425,34 +425,10 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </section><section id="popular-visualizations" class="slide level2"><h2>Popular visualizations</h2>
-<div class="columns">
-<p>::: {.column width= “30%”}</p>
-<ul>
-<li><p>Bar plots</p></li>
-<li><p>Scatter plots</p></li>
-<li><p>Box plots</p></li>
-<li><p>Violin plots</p></li>
-<li><p>many more…</p></li>
-</ul>
-</div>
-<p>::: {.column width = “70%”} :::</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What do they all have in common now days? - <code>ggplot2</code></strong></p>
-</div>
-<div class="callout-content">
 
-</div>
-</div>
-</div>
-<p>:::</p>
-</section><section id="the-grammar-of-graphics" class="slide level2"><h2>The grammar of graphics</h2>
-</section><section id="what-is-a-grammar" class="slide level2"><h2>What is a grammar?</h2>
-<p>“The fundamental principles or rules of an art or science” - Oxford English Dictionary</p>
+<img data-src="Introduction_to_DataViz_files/figure-revealjs/grid-1.png" width="960" class="r-stretch"></section><section id="philosophy-behind-ggplot2" class="slide level2"><h2>Philosophy behind <code>ggplot2</code>
+</h2>
+<p>Creating a plot is like forming a well-structured sentence with “subject a predicate and an object”.</p>
 <div>
 <ul>
 <li class="fragment"><p>reveal composition of complicated graphics</p></li>
@@ -478,11 +454,12 @@ Bolívar Aponte Rolón
 <div class="column" style="width:40%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-1-1.png" width="384"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-1-1.png" width="480"></p>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
 <p><code>ggplot2</code> builds complex plots one layer at a time.</p>
+<p>We can easily change the meaning of the “sentence” by adding or removing parts.</p>
 <div>
 <ul>
 <li class="fragment"><p>What are the necessary components of a plot?</p></li>
@@ -496,18 +473,20 @@ Bolívar Aponte Rolón
 <div class="column" style="width:40%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-2-1.png" width="384"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
 <p>A plot contains:</p>
 <div>
 <ul>
-<li class="fragment"><p>Data and aesthetic mapping</p></li>
-<li class="fragment"><p>Layer(s) containing geometric object(s) and statistical transformation(s)</p></li>
-<li class="fragment"><p>Scales</p></li>
-<li class="fragment"><p>Coordinate system</p></li>
-<li class="fragment"><p>(Optional) facets or themes</p></li>
+<li class="fragment"><p><strong>Data</strong>: data we want to plot</p></li>
+<li class="fragment"><p><em>Continuous</em> or <em>discrete</em> variables</p></li>
+<li class="fragment"><p><strong>Mapping</strong>: What part of the data we are mapping?</p></li>
+<li class="fragment"><p><strong>Geometry</strong>: Points? lines?</p></li>
+<li class="fragment"><p><strong>Scales</strong> (or transformations): Linearly? Logarithmically?</p></li>
+<li class="fragment"><p><strong>Coordinate system</strong>: Cartesian , polar…</p></li>
+<li class="fragment"><p>Faceting and themes</p></li>
 </ul>
 </div>
 </div>
@@ -517,7 +496,7 @@ Bolívar Aponte Rolón
 <div class="column" style="width:40%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-3-1.png" width="384"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-3-1.png" width="480"></p>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
@@ -532,11 +511,9 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </div>
-</section><section><section id="mapping-data-to-aesthetics" class="title-slide slide level1 center"><h1>Mapping data to aesthetics</h1>
-
-</section><section id="what-data-inputs-are-needed" class="slide level2"><h2>What data inputs are needed?</h2>
-<p>Data can be added to either the entire ggplot object or a particular layer.</p>
-<p>Input data must be a dataframe in ‘tidy’ format:</p>
+</section><section id="mapping-data-to-aesthetics" class="slide level2"><h2>Mapping data to aesthetics</h2>
+<h3 id="what-inputs-are-needed">What inputs are needed?</h3>
+<p>Input data must be a data frame in ‘tidy’ format:</p>
 <div>
 <ul>
 <li class="fragment"><p>every column is a variable</p></li>
@@ -609,7 +586,7 @@ Bolívar Aponte Rolón
 <li class="fragment"><p><code>ggplot()</code> data and aesthetics are inherited, but can be overridden</p></li>
 </ul>
 </div>
-</section></section><section><section id="lets-explore-some-visualizations" class="title-slide slide level1 center"><h1>Let’s explore some visualizations</h1>
+</section><section><section id="lets-explore-some-visualizations" class="title-slide slide level1 center"><h1>Let’s explore some visualizations</h1>
 
 </section><section id="download" class="slide level2"><h2>Download</h2>
 <ul>
@@ -630,8 +607,44 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </div>
-</section><section id="box-plots" class="slide level2 smaller"><h2>Box Plots</h2>
 </section><section id="bar-plots" class="slide level2"><h2>Bar Plots</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  species   bill_length_mm bill_depth_mm body_mass_g
+  &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;
+1 Adelie              39.1          18.7        3750
+2 Adelie              39.5          17.4        3800
+3 Gentoo              46.7          15.3        5200
+4 Gentoo              43.3          13.4        4400
+5 Chinstrap           46.1          18.2        3250
+6 Chinstrap           51.3          18.2        3750</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="fu">aes</span>( <span class="at">fill =</span> species), <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face=</span><span class="st">"bold"</span>)) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">""</span>, <span class="at">title =</span> <span class="st">"Bar plot"</span>)<span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FF8100"</span>, <span class="st">"#C75BCB"</span>, <span class="st">"#057575"</span>)) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>  <span class="fu">guides</span>(<span class="at">size =</span> <span class="st">"none"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13"></a>         <span class="at">fill =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section><section id="box-plots" class="slide level2"><h2>Box Plots</h2>
 </section><section id="scatter-plots" class="slide level2"><h2>Scatter Plots</h2>
 </section><section id="histograms" class="slide level2"><h2>Histograms</h2>
 </section><section id="section" class="slide level2"><h2></h2>
