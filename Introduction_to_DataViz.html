@@ -470,21 +470,43 @@ Bolívar Aponte Rolón
 </div>
 </section><section id="components-of-a-plot" class="slide level2"><h2>Components of a plot</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:30%;">
 <div class="cell">
 <div class="cell-output-display">
 <p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
+</div><div class="column" style="width:70%;">
 <p>A plot contains:</p>
 <div>
 <ul>
-<li class="fragment"><p><strong>Data</strong>: data we want to plot</p></li>
-<li class="fragment"><p><em>Continuous</em> or <em>discrete</em> variables</p></li>
+<li class="fragment">
+<p><strong>Data</strong>: data we want to plot</p>
+<ul>
+<li class="fragment">
+<em>Continuous</em> or <em>discrete</em> variables</li>
+</ul>
+</li>
 <li class="fragment"><p><strong>Mapping</strong>: What part of the data we are mapping?</p></li>
 <li class="fragment"><p><strong>Geometry</strong>: Points? lines?</p></li>
 <li class="fragment"><p><strong>Scales</strong> (or transformations): Linearly? Logarithmically?</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section><section id="components-of-a-plot-1" class="slide level2"><h2>Components of a plot</h2>
+<p>(<em>continuation</em>)</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-3-1.png" width="480"></p>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<p>A plot contains:</p>
+<div>
+<ul>
 <li class="fragment"><p><strong>Coordinate system</strong>: Cartesian , polar…</p></li>
 <li class="fragment"><p>Faceting and themes</p></li>
 </ul>
@@ -493,13 +515,13 @@ Bolívar Aponte Rolón
 </div>
 </section><section id="components-of-a-layer" class="slide level2"><h2>Components of a layer</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:30%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-3-1.png" width="480"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-4-1.png" width="480"></p>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
+</div><div class="column" style="width:70%;">
 <p>A layer contains:</p>
 <div>
 <ul>
@@ -535,7 +557,7 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </section><section id="example-dataset---raw" class="slide level2"><h2>Example dataset - raw</h2>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   species   bill_length_mm bill_depth_mm body_mass_g
@@ -553,7 +575,7 @@ Bolívar Aponte Rolón
 <div class="column" style="width:40%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-5-1.png" width="384"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-6-1.png" width="384"></p>
 </div>
 </div>
 <div class="cell">
@@ -609,21 +631,22 @@ Bolívar Aponte Rolón
 </div>
 </section><section id="bar-plots" class="slide level2"><h2>Bar Plots</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column" style="width:50%;">
+<p>Mapped data set:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
-  species   bill_length_mm bill_depth_mm body_mass_g
-  &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;
-1 Adelie              39.1          18.7        3750
-2 Adelie              39.5          17.4        3800
-3 Gentoo              46.7          15.3        5200
-4 Gentoo              43.3          13.4        4400
-5 Chinstrap           46.1          18.2        3250
-6 Chinstrap           51.3          18.2        3750</code></pre>
+  Color         x     y  Size
+  &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+1 Adelie     39.1  18.7  3750
+2 Adelie     39.5  17.4  3800
+3 Gentoo     46.7  15.3  5200
+4 Gentoo     43.3  13.4  4400
+5 Chinstrap  46.1  18.2  3250
+6 Chinstrap  51.3  18.2  3750</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:60%;">
+</div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(ggplot2)</span>
@@ -638,18 +661,80 @@ Bolívar Aponte Rolón
 <span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FF8100"</span>, <span class="st">"#C75BCB"</span>, <span class="st">"#057575"</span>)) <span class="sc">+</span></span>
 <span id="cb5-12"><a href="#cb5-12"></a>  <span class="fu">guides</span>(<span class="at">size =</span> <span class="st">"none"</span>,</span>
 <span id="cb5-13"><a href="#cb5-13"></a>         <span class="at">fill =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section><section id="bar-plots-1" class="slide level2"><h2>Bar Plots</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Mapped data set:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Color         x     y  Size
+  &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+1 Adelie     39.1  18.7  3750
+2 Adelie     39.5  17.4  3800
+3 Gentoo     46.7  15.3  5200
+4 Gentoo     43.3  13.4  4400
+5 Chinstrap  46.1  18.2  3250
+6 Chinstrap  51.3  18.2  3750</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-15-1.png" width="480"></p>
 </div>
 </div>
 </div>
 </div>
 </section><section id="box-plots" class="slide level2"><h2>Box Plots</h2>
+<div class="columns">
+<p>::: {.column width =“50%”}</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> bill_length_mm,</span>
+<span id="cb7-7"><a href="#cb7-7"></a>                     <span class="at">fill =</span> species)) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">16</span>)<span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face=</span><span class="st">"bold"</span>)) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="co">#xlab("")+</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">""</span>, <span class="at">title =</span> <span class="st">"Box plot"</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FF8100"</span>, <span class="st">"#C75BCB"</span>, <span class="st">"#057575"</span>)) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a>  <span class="fu">guides</span>(<span class="at">size =</span> <span class="st">"none"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16"></a>          <span class="at">fill =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>::: {.column width =“50%”}</p>
+
+<img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"><p>::: :::</p>
 </section><section id="scatter-plots" class="slide level2"><h2>Scatter Plots</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-18-1.png" width="480"></p>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-19-1.png" width="480"></p>
+</div>
+</div>
+</div>
+</div>
 </section><section id="histograms" class="slide level2"><h2>Histograms</h2>
 </section><section id="section" class="slide level2"><h2></h2>
-<div class="footer footer-default">
 
+<img src="TUL_Logos_narrow.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p>Introduction to Data Visualization in R</p>
 </div>
 </section></section>
 </div>
@@ -819,7 +904,7 @@ Bolívar Aponte Rolón
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 3.0e-2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
