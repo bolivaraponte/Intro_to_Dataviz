@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.433">
 <meta name="author" content="Bolívar Aponte Rolón">
-<meta name="dcterms.date" content="2023-10-24">
+<meta name="dcterms.date" content="2023-10-25">
 <title>Intro to Data Visualization in R</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -95,7 +95,26 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
 <link rel="stylesheet" href="Introduction_to_DataViz_files/libs/revealjs/dist/theme/quarto.css">
 <link href="Introduction_to_DataViz_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="Introduction_to_DataViz_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -402,7 +421,7 @@ Bolívar Aponte Rolón
 </div>
 </div>
 
-  <p class="date">2023-10-24</p>
+  <p class="date">October 25, 2023</p>
 </section><section id="introduction-to-ggplot2" class="slide level2"><h2>Introduction to <code>ggplot2</code>
 </h2>
 <div>
@@ -451,7 +470,7 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </div>
-</section><section id="layered-grammar-of-graphics" class="slide level2"><h2>Layered grammar of graphics</h2>
+</section><section id="layered-grammar-of-graphics" class="slide level2 smaller"><h2>Layered grammar of graphics</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="cell">
@@ -470,7 +489,7 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </div>
-</section><section id="components-of-a-plot" class="slide level2"><h2>Components of a plot</h2>
+</section><section id="components-of-a-plot" class="slide level2 smaller"><h2>Components of a plot</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="cell">
@@ -483,7 +502,7 @@ Bolívar Aponte Rolón
 <div>
 <ul>
 <li class="fragment">
-<p><em>Data</em> we want to plot</p>
+<p><strong>Data</strong> we want to plot</p>
 <ul>
 <li class="fragment">
 <em>Continuous</em> or <em>discrete</em>
@@ -493,23 +512,6 @@ Bolívar Aponte Rolón
 <li class="fragment"><p><strong>Mapping</strong>: What part of the data we are mapping?</p></li>
 <li class="fragment"><p><strong>Geometry</strong>: Points? lines?</p></li>
 <li class="fragment"><p><strong>Scales</strong> (or transformations): Linearly? Logarithmically?</p></li>
-</ul>
-</div>
-</div>
-</div>
-</section><section id="components-of-a-plot-1" class="slide level2"><h2>Components of a plot</h2>
-<p>(<em>continuation</em>)</p>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-3-1.png" width="480"></p>
-</div>
-</div>
-</div><div class="column" style="width:70%;">
-<p>A plot contains:</p>
-<div>
-<ul>
 <li class="fragment"><p><strong>Coordinate system</strong>: Cartesian , polar…</p></li>
 <li class="fragment"><p>Faceting and themes</p></li>
 </ul>
@@ -521,7 +523,7 @@ Bolívar Aponte Rolón
 <div class="column" style="width:30%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-4-1.png" width="480"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-3-1.png" width="480"></p>
 </div>
 </div>
 </div><div class="column" style="width:70%;">
@@ -536,7 +538,7 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </div>
-</section><section id="mapping-data-to-aesthetics" class="slide level2"><h2>Mapping data to aesthetics</h2>
+</section><section id="mapping-data-to-aesthetics" class="slide level2 smaller"><h2>Mapping data to aesthetics</h2>
 <h3 id="what-inputs-are-needed">What inputs are needed?</h3>
 <p>Input data must be a data frame in ‘tidy’ format:</p>
 <div>
@@ -578,7 +580,7 @@ Bolívar Aponte Rolón
 <div class="column" style="width:40%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-6-1.png" width="384"></p>
+<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/unnamed-chunk-5-1.png" width="384"></p>
 </div>
 </div>
 <div class="cell">
@@ -604,13 +606,12 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </div>
-</section><section id="where-to-specify-aesthetics" class="slide level2"><h2>Where to specify aesthetics?</h2>
+</section><section id="where-to-specify-aesthetics" class="slide level2 smaller"><h2>Where to specify aesthetics?</h2>
 <div>
 <ul>
 <li class="fragment"><p>Can be supplied to initial <code>ggplot()</code> call, in individual layers, or a combo</p></li>
 <li class="fragment"><p><code>ggplot()</code> data and aesthetics are <em>inherited</em>, but can be <em>overridden</em></p></li>
 </ul>
-</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm,</span>
 <span id="cb4-2"><a href="#cb4-2"></a>                     <span class="at">color =</span> species)) <span class="sc">+</span></span>
@@ -624,6 +625,7 @@ Bolívar Aponte Rolón
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> penguins, </span>
 <span id="cb6-3"><a href="#cb6-3"></a>             <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> flipper_length_mm, <span class="at">color =</span> species))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </section><section><section id="lets-explore-some-visualizations" class="title-slide slide level1 center"><h1>Let’s explore some visualizations</h1>
 
@@ -779,9 +781,35 @@ Bolívar Aponte Rolón
 </div>
 </div>
 </div>
+</section></section><section><section id="code-along-exercise" class="title-slide slide level1 center"><h1>Code-along exercise</h1>
+
+</section><section id="recreating-a-layered-plot" class="slide level2"><h2>Recreating a layered plot</h2>
+
+<img data-src="Introduction_to_DataViz_files/figure-revealjs/recreate-1.png" width="672" class="r-stretch quarto-figure-center"></section><section id="recreating-a-layered-plot-1" class="slide level2"><h2>Recreating a layered plot</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins), </span>
+<span id="cb12-2"><a href="#cb12-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>                              <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitterdodge</span>(<span class="at">dodge.width =</span> <span class="fl">0.9</span>, <span class="at">jitter.width =</span> <span class="fl">0.3</span>),</span>
+<span id="cb12-6"><a href="#cb12-6"></a>             <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">"grey30"</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">geom_crossbar</span>(<span class="at">stat=</span><span class="st">"summary"</span>, </span>
+<span id="cb12-8"><a href="#cb12-8"></a>               <span class="at">fun =</span> mean, </span>
+<span id="cb12-9"><a href="#cb12-9"></a>               <span class="at">fun.max =</span> mean, </span>
+<span id="cb12-10"><a href="#cb12-10"></a>               <span class="at">fun.min =</span> mean,</span>
+<span id="cb12-11"><a href="#cb12-11"></a>               <span class="at">alpha =</span> <span class="fl">0.3</span>, </span>
+<span id="cb12-12"><a href="#cb12-12"></a>               <span class="at">size =</span> <span class="fl">0.3</span>, </span>
+<span id="cb12-13"><a href="#cb12-13"></a>               <span class="at">width =</span> <span class="fl">0.7</span>,</span>
+<span id="cb12-14"><a href="#cb12-14"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>)) <span class="sc">+</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a></span>
+<span id="cb12-16"><a href="#cb12-16"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">16</span>)<span class="sc">+</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face=</span><span class="st">"bold"</span>)) <span class="sc">+</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FF8100"</span>, <span class="st">"#C75BCB"</span>)) <span class="sc">+</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">170</span>, <span class="dv">240</span>, <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section><section><section id="facetting-and-scales" class="title-slide slide level1 center"><h1>Facetting and Scales</h1>
 
-</section><section id="facets" class="slide level2"><h2>Facets</h2>
+</section><section id="facets" class="slide level2 smaller"><h2>Facets</h2>
 <p>We can split the data into one or more variables using the <code>facet_wrap()</code> and <code>facet_grid()</code> function.</p>
 <aside class="notes"><p>This function takes a formula as an argument, and the formula is made up of the variables that you want to split the data by.</p>
 <style type="text/css">
@@ -794,13 +822,92 @@ Bolívar Aponte Rolón
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside><div class="cell">
+      }</style></aside>
+<img data-src="Introduction_to_DataViz_files/figure-revealjs/facetwrap-1.png" width="960" class="r-stretch quarto-figure-center"></section><section id="scales" class="slide level2 smaller"><h2>Scales</h2>
+<p>We can change the scales of the axes using the <code>scale_</code> functions, as well as colors sizes and shapes.</p>
+<p>Changes can be aesthetically or statistical transformations (e.g.&nbsp;<code>scale_x_log10()</code>)</p>
+<ul>
+<li><p><em>fill</em>: Color filling an object (e.g.&nbsp;bars)</p></li>
+<li><p><em>color</em>: color of the border of an object (e.g.&nbsp;boxes of a boxplot)</p></li>
+<li><p><em>size</em>: size of a point or shape</p></li>
+<li><p><em>shape</em>: shape of a point</p></li>
+<li><p><em>alpha</em>: transparency of an object</p></li>
+</ul></section><section id="scales-1" class="slide level2 smaller"><h2>Scales</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(penguins), </span>
+<span id="cb13-2"><a href="#cb13-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> flipper_length_mm,</span>
+<span id="cb13-3"><a href="#cb13-3"></a>                              <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitterdodge</span>(<span class="at">dodge.width =</span> <span class="fl">0.9</span>, <span class="at">jitter.width =</span> <span class="fl">0.3</span>),</span>
+<span id="cb13-6"><a href="#cb13-6"></a>             <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">"grey30"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">geom_crossbar</span>(<span class="at">stat=</span><span class="st">"summary"</span>, </span>
+<span id="cb13-8"><a href="#cb13-8"></a>               <span class="at">fun =</span> mean, </span>
+<span id="cb13-9"><a href="#cb13-9"></a>               <span class="at">fun.max =</span> mean, </span>
+<span id="cb13-10"><a href="#cb13-10"></a>               <span class="at">fun.min =</span> mean,</span>
+<span id="cb13-11"><a href="#cb13-11"></a>               <span class="at">alpha =</span> <span class="fl">0.3</span>, </span>
+<span id="cb13-12"><a href="#cb13-12"></a>               <span class="at">size =</span> <span class="fl">0.3</span>, </span>
+<span id="cb13-13"><a href="#cb13-13"></a>               <span class="at">width =</span> <span class="fl">0.7</span>,</span>
+<span id="cb13-14"><a href="#cb13-14"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>)) <span class="sc">+</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a></span>
+<span id="cb13-16"><a href="#cb13-16"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">16</span>)<span class="sc">+</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color=</span><span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">14</span>, <span class="at">face=</span><span class="st">"bold"</span>)) <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#FF8100"</span>, <span class="st">"#C75BCB"</span>)) <span class="sc">+</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">170</span>, <span class="dv">240</span>, <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img data-src="Introduction_to_DataViz_files/figure-revealjs/facetwrap-1.png" width="480"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="Introduction_to_DataViz_files/figure-revealjs/scales2-1.png" width="576"></p>
+</figure>
 </div>
 </div>
-<p><img src="TUL_Logos_narrow.png" class="slide-logo"></p>
-<div class="footer footer-default">
+</div>
+</div>
+</div>
+</section></section><section><section id="saving-your-progress" class="title-slide slide level1 center"><h1>Saving your progress</h1>
+
+</section><section id="saving-plots" class="slide level2 smaller"><h2>Saving plots</h2>
+<p>Use the function <code>ggsave()</code> to save your plot to a file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"./myfolder/myplot.png"</span>, <span class="at">plot =</span> p, <span class="at">width =</span> 180mm, <span class="at">height =</span> 180mm, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can save in a variety of formats:</p>
+<ul>
+<li><p>PNG</p></li>
+<li><p>SVG</p></li>
+<li><p>PDF</p></li>
+<li><p>JPEG</p></li>
+</ul>
+<p>You can control the resolution and dimensions of the save plot.</p>
+</section><section id="saving-plots-1" class="slide level2 smaller"><h2>Saving plots</h2>
+<p>You can also save plots using the “Export” button in the “Plots” tab of RStudio.</p>
+
+<img data-src="./Introduction_to_DataViz_files/figure-revealjs/screenshot.png" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">export</p></section><section id="resources-for-data-visualization" class="slide level2 smaller scrollable"><h2>Resources for data visualization</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-alessina2019" class="csl-entry" role="listitem">
+Alessina, Stefano, and Madlen Wilmes. 2019. <em>Computing <span>Skills</span> for <span>Biologists</span>: <span>A Toolbox</span></em>. <span>Princeton University Press</span>. <a href="http://www.jstor.org/stable/j.ctvc77jrc">http://www.jstor.org/stable/j.ctvc77jrc</a>.
+</div>
+<div id="ref-zotero-1259" class="csl-entry" role="listitem">
+<span>“Function Reference.”</span> n.d. <span>ggplot2</span>. Accessed October 25, 2023. <a href="https://ggplot2.tidyverse.org/reference/index.html">https://ggplot2.tidyverse.org/reference/index.html</a>.
+</div>
+<div id="ref-guo2023" class="csl-entry" role="listitem">
+Guo, Jessica. 2023. <span>“Part 1: <span>Understanding</span> the Foundations of ’Ggplot2’.”</span> June 5, 2023. <a href="https://datascience.cct.arizona.edu/events/200-part-1-understanding-foundations-ggplot2">https://datascience.cct.arizona.edu/events/200-part-1-understanding-foundations-ggplot2</a>.
+</div>
+<div id="ref-holtz" class="csl-entry" role="listitem">
+Holtz, Yan. n.d. <span>“The <span>R Graph Gallery</span>.”</span> <span>The R Graph Gallery</span>. Accessed October 25, 2023. <a href="https://r-graph-gallery.com/index.html">https://r-graph-gallery.com/index.html</a>.
+</div>
+<div id="ref-wickham2016" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>Ggplot2: <span>Elegant Graphics</span> for <span>Data Analysis</span></em>. <span>Springer-Verlag New York</span>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-wilkinson2005" class="csl-entry" role="listitem">
+Wilkinson, Leland, and Graham Wills. 2005. <em>The Grammar of Graphics</em>. Second edition. Statistics and Computing. <span>New York, NY [Heidelberg]</span>: <span>Springer</span>.
+</div>
+</div>
+
+<img src="TUL_Logos_narrow.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>Introduction to Data Visualization in R</p>
 </div>
 </section></section>
