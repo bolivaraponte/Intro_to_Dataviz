@@ -366,14 +366,12 @@ ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm,
   geom_point()
 ```
 
-
 ```{r}
 #| eval: false
 #| echo: true
 ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
   geom_point(aes(color = species))
 ```
-
 
 ```{r}
 #| eval: false
@@ -398,10 +396,10 @@ How to install? Use command `install.packages()`
 :::
 
 ## Bar Plots
+
 ::: columns
 ::: {.column width="50%"}
-::: incremental
-```{r}
+```{r, bar plots}
 #| eval: false
 #| echo: true
 #| fig-width: 5
@@ -423,10 +421,9 @@ ggplot(penguins, aes(x = species, y = bill_length_mm)) +
          fill = "none")
 ```
 :::
-:::
 
 ::: {.column width="50%"}
-```{r}
+```{r, bar plots2}
 #| eval: true
 #| echo: false
 #| fig-width: 5
@@ -446,12 +443,71 @@ ggplot(penguins, aes(x = species, y = bill_length_mm)) +
 :::
 :::
 
+## Bar Plots
+
+::: incremental
+-   How would we flip the axes and have a horizontal plot?
+:::
+
+## Bar Plots
+
+Use `coord_flip()` to flip x and y axes.
+
+::: columns
+::: {.column width="50%"}
+```{r, coord_flip bar plots}
+#| eval: false
+#| echo: true
+#| fig-width: 5
+#| fig-height: 5
+
+library(palmerpenguins)
+library(ggplot2)
+library(dplyr)
+
+ggplot(penguins, aes(x = species, y = bill_length_mm)) +
+  geom_bar(stat = "identity", aes( fill = species), alpha = 0.7) +
+  theme_classic(base_size = 16) +
+  theme(plot.title = element_text(color="black",
+                                  size = 14,
+                                  face="bold")) +
+  labs(x="", title = "Bar plot")+
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  coord_flip() +
+  guides(size = "none",
+         fill = "none")
+```
+:::
+
+::: {.column width="50%"}
+```{r, coord_flip bar plots2}
+#| eval: true
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5
+
+ggplot(penguins, aes(x = species, y = bill_length_mm)) +
+  geom_bar(stat = "identity", aes( fill = species), alpha = 0.7) +
+  theme_classic(base_size = 16) +
+  theme(plot.title = element_text(color="black",
+                                  size = 14,
+                                  face="bold")) +
+  labs(x="", title = "Bar plot")+
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  coord_flip() +
+  guides(size = "none",
+         fill = "none")
+```
+:::
+:::
+
 ## Box Plots
+
 ::: columns
 ::: {.column width="50%"}
 Mapped data set:
 
-```{r}
+```{r, box plots}
 #| eval: false
 #| echo: true
 #| fig-width: 5
@@ -476,7 +532,7 @@ ggplot(penguins, aes(x = species, y = bill_length_mm,
 :::
 
 ::: {.column width="50%"}
-```{r}
+```{r, box plots2}
 #| eval: true
 #| echo: false
 #| fig-width: 5
@@ -543,7 +599,6 @@ scatter_b <- ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm,
 
 ```
 
-
 ```{r, scatter_arr}
 #| echo: false
 scatter_arr <- ggarrange(scatter_a, scatter_b, nrow = 1, ncol=2, common.legend = TRUE, legend="right")
@@ -551,6 +606,7 @@ scatter_arr
 ```
 
 ## Histograms
+
 ::: columns
 ::: {.column width="50%"}
 ```{r, histograms}
@@ -588,6 +644,7 @@ ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
 :::
 
 ## Density Plots
+
 ::: columns
 ::: {.column width="50%"}
 ```{r, density plots}
@@ -622,3 +679,34 @@ ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
 :::
 :::
 
+# Facetting and Scales
+
+## Facets
+
+We can split the data into one or more variables using the `facet_wrap()` and `facet_grid()` function. 
+
+::: {.notes} 
+This function takes a formula as an argument, and the formula is made up of the variables that you want to split the data by. 
+:::
+
+```{r, facetwrap} 
+#| warning: false 
+#| echo: false 
+#| fig-width: 5 
+#| fig-height: 5 
+library(palmerpenguins) 
+library(ggplot2) 
+library(dplyr) 
+library(ggpubr)
+
+ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
+  geom_density(binwidth = 1, color = "grey30", alpha = 0.7) +
+  theme_classic(base_size = 16) + 
+  theme(plot.title = element_text(color="black",
+                                  size = 14,
+                                  face="bold"), legend.position =
+          "right") + 
+  #xlab("")+ 
+scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) + 
+                    facet_wrap(~island)
+```
