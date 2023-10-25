@@ -1,6 +1,7 @@
 ---
 title: "Intro to Data Visualization in R"
 author: "Bolívar Aponte Rolón"
+date: today
 format: 
   revealjs:
     footer: "Introduction to Data Visualization in R"
@@ -42,12 +43,8 @@ The first segment of this presentation is based on University of Arizona's [CALS
 
 ## Popular visualizations
 
-```{r, barplot}
+```{r, pop_viz}
 #| echo: false
-
-
-
-
 library(palmerpenguins)
 library(ggplot2)
 library(dplyr)
@@ -108,7 +105,7 @@ arranged
 
 ## Philosophy behind `ggplot2`
 
-Creating a plot is like forming a well-structured sentence with "subject a predicate and an object".
+Creating a plot is like forming a well-structured sentence with *subject* a *predicate* and an *object*.
 
 ::: incremental
 -   reveal composition of complicated graphics
@@ -188,9 +185,9 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm,
 A plot contains:
 
 ::: incremental
--   **Data**: data we want to plot
+-   *Data* we want to plot
 
-    -   *Continuous* or *discrete* variables
+    -   *Continuous* or *discrete*
 
 -   **Mapping**: What part of the data we are mapping?
 
@@ -201,8 +198,8 @@ A plot contains:
 :::
 :::
 
+## Components of a plot
 
-## Components of a plot 
 (*continuation*)
 
 ::: columns
@@ -358,30 +355,31 @@ example %>%
 ::: incremental
 -   Can be supplied to initial `ggplot()` call, in individual layers, or a combo
 
--   `ggplot()` data and aesthetics are inherited, but can be overridden
+-   `ggplot()` data and aesthetics are *inherited*, but can be *overridden*
 :::
 
 ```{r}
 #| eval: false
-#| echo: false
-
-ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm, 
+#| echo: true
+ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm,
                      color = species)) +
   geom_point()
 ```
 
+
 ```{r}
 #| eval: false
-#| echo: false
+#| echo: true
 ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm)) +
   geom_point(aes(color = species))
 ```
 
+
 ```{r}
 #| eval: false
-#| echo: false
+#| echo: true
 ggplot() +
-  geom_point(data = penguins,
+  geom_point(data = penguins, 
              aes(x = body_mass_g, y = flipper_length_mm, color = species))
 ```
 
@@ -400,36 +398,25 @@ How to install? Use command `install.packages()`
 :::
 
 ## Bar Plots
-
 ::: columns
 ::: {.column width="50%"}
-Mapped data set:
-```{r}
-#| echo: false
-library(dplyr)
-example <- penguins[c(1:2, 160:161, 283:284), c(1, 3:4, 6)]
-example %>%
-  rename(x = bill_length_mm,
-         y = bill_depth_mm,
-         Size = body_mass_g,
-         Color = species)
-```
-:::
-
-::: {.column width="50%"}
+::: incremental
 ```{r}
 #| eval: false
 #| echo: true
+#| fig-width: 5
+#| fig-height: 5
 
 library(palmerpenguins)
 library(ggplot2)
 library(dplyr)
-library(ggpubr)
 
 ggplot(penguins, aes(x = species, y = bill_length_mm)) +
   geom_bar(stat = "identity", aes( fill = species), alpha = 0.7) +
   theme_classic(base_size = 16) +
-theme(plot.title = element_text(color="black", size = 14, face="bold")) +
+  theme(plot.title = element_text(color="black",
+                                  size = 14,
+                                  face="bold")) +
   labs(x="", title = "Bar plot")+
   scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
   guides(size = "none",
@@ -438,19 +425,53 @@ theme(plot.title = element_text(color="black", size = 14, face="bold")) +
 :::
 :::
 
-## Bar Plots
+::: {.column width="50%"}
+```{r}
+#| eval: true
+#| echo: false
+#| fig-width: 5
+#| fig-height: 5
+
+ggplot(penguins, aes(x = species, y = bill_length_mm)) +
+  geom_bar(stat = "identity", aes( fill = species), alpha = 0.7) +
+  theme_classic(base_size = 16) +
+  theme(plot.title = element_text(color="black",
+                                  size = 14,
+                                  face="bold")) +
+  labs(x="", title = "Bar plot")+
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  guides(size = "none",
+         fill = "none")
+```
+:::
+:::
+
+## Box Plots
 ::: columns
 ::: {.column width="50%"}
 Mapped data set:
+
 ```{r}
-#| echo: false
+#| eval: false
+#| echo: true
+#| fig-width: 5
+#| fig-height: 5
+
+library(palmerpenguins)
+library(ggplot2)
 library(dplyr)
-example <- penguins[c(1:2, 160:161, 283:284), c(1, 3:4, 6)]
-example %>%
-  rename(x = bill_length_mm,
-         y = bill_depth_mm,
-         Size = body_mass_g,
-         Color = species)
+
+ggplot(penguins, aes(x = species, y = bill_length_mm,
+                     fill = species)) +
+  geom_boxplot(alpha = 0.8) +
+  theme_classic(base_size = 16)+
+  theme(plot.title = element_text(color="black", size = 14, face="bold")) +
+    #xlab("")+
+  labs(x="", title = "Box plot") +
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+
+  guides(size = "none",
+          fill = "none")
 ```
 :::
 
@@ -461,35 +482,6 @@ example %>%
 #| fig-width: 5
 #| fig-height: 5
 
-library(palmerpenguins)
-library(ggplot2)
-library(dplyr)
-library(ggpubr)
-
-ggplot(penguins, aes(x = species, y = bill_length_mm)) +
-  geom_bar(stat = "identity", aes( fill = species), alpha = 0.7) +
-  theme_classic(base_size = 16) +
-theme(plot.title = element_text(color="black", size = 14, face="bold")) +
-  labs(x="", title = "Bar plot")+
-  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
-  guides(size = "none",
-         fill = "none")
-```
-:::
-:::
-
-
-## Box Plots
-::: columns
-::: {.column width ="50%"}
-```{r}
-#| echo: true
-#| eval: false
-
-library(palmerpenguins)
-library(ggplot2)
-library(dplyr)
-library(ggpubr)
 
 ggplot(penguins, aes(x = species, y = bill_length_mm,
                      fill = species)) +
@@ -504,44 +496,23 @@ ggplot(penguins, aes(x = species, y = bill_length_mm,
           fill = "none")
 ```
 :::
-
-::: {.column width ="50%"}
-```{r}
-#| echo: false
-#| eval: true
-
-library(palmerpenguins)
-library(ggplot2)
-library(dplyr)
-library(ggpubr)
-
-ggplot(penguins, aes(x = species, y = bill_length_mm,
-                     fill = species)) +
-  geom_boxplot(alpha = 0.8) +
-  theme_classic(base_size = 16)+
-  theme(plot.title = element_text(color="black", size = 14, face="bold")) +
-    #xlab("")+
-  labs(x="", title = "Box plot") +
-  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
-  guides(size = "none",
-          fill = "none")
-```
 :::
-:::
-
 
 ## Scatter Plots
-::: columns
-::: {.column width="50%"}
-```{r}
+
+```{r, scatter_plots}
 #| warning: false
 #| echo: false
 #| fig-width: 5
 #| fig-height: 5
 library(palmerpenguins)
 library(ggplot2)
+library(dplyr)
+library(ggpubr)
 
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
+# Scatter_a
+
+scatter_a <- ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, 
                      size = body_mass_g,
                      color = species)) +
   geom_point(alpha = 0.5) +
@@ -553,42 +524,101 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm,
   scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575"))
   #guides(size = "none",
    #      color = "none")
-```
-:::
 
-::: {.column width="50%"}
-```{r}
-#| echo: false
-#| fig-width: 5
-#| fig-height: 5
 
-library(palmerpenguins)
-library(ggplot2)
-library(dplyr)
-library(ggpubr)
+# Scatter_b
 
-ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm,
+scatter_b <- ggplot(penguins, aes(x = body_mass_g, y = flipper_length_mm,
                      color = species)) +
   geom_point(alpha = 0.8, size= 3) +
-  geom_smooth(method = "lm", se = FALSE, color = "grey20", size = 1.25) +
+  geom_smooth(method = "lm", se = TRUE, color = "grey20", linewidth = 1.25) +
   theme_classic(base_size = 16) +
   theme(plot.title = element_text(color="black", size = 14, face="bold"),
         legend.position = "right") +
     #xlab("")+
   labs(title = "b") +
-  scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575"))
-  
-  # guides(size = "none",
-  #        color = "none")
+  scale_color_manual(values = c("#FF8100", "#C75BCB", "#057575")) +
+  guides(size = "none",
+          color = "none")
+
+```
 
 
+```{r, scatter_arr}
+#| echo: false
+scatter_arr <- ggarrange(scatter_a, scatter_b, nrow = 1, ncol=2, common.legend = TRUE, legend="right")
+scatter_arr
+```
 
+## Histograms
+::: columns
+::: {.column width="50%"}
+```{r, histograms}
+#| eval: false
+#| echo: true
+#| fig.width: 5
+#| fig.height: 5
 
+ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
+  geom_histogram(binwidth = 1, color = "black", alpha = 0.8) +
+  theme_classic(base_size = 16) +
+  theme(plot.title = element_text(color="black", size = 14, face="bold"),
+        legend.position = "right") +
+    #xlab("")+
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575"))
+```
+:::
+
+::: {.column width="50%"}
+```{r, histograms2}
+#| eval: true
+#| echo: false
+#| fig.width: 5
+#| fig.height: 5
+
+ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
+  geom_histogram(binwidth = 1, color = "black", alpha = 0.8) +
+  theme_classic(base_size = 16) +
+  theme(plot.title = element_text(color="black", size = 14, face="bold"),
+        legend.position = "right") +
+    #xlab("")+
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575"))
 ```
 :::
 :::
 
+## Density Plots
+::: columns
+::: {.column width="50%"}
+```{r, density plots}
+#| eval: false
+#| echo: true
+#| fig.width: 5
+#| fig.height: 5
+ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
+  geom_density(binwidth = 1, color = "grey30", alpha = 0.7) +
+  theme_classic(base_size = 16) +
+  theme(plot.title = element_text(color="black", size = 14, face="bold"),
+        legend.position = "right") +
+    #xlab("")+
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575"))
+```
+:::
 
-## Histograms
+::: {.column width="50%"}
+```{r, density plots2}
+#| eval: true
+#| echo: false
+#| fig.width: 5
+#| fig.height: 5
+ggplot(penguins, aes(x = bill_length_mm, fill = species)) +
+  geom_density(binwidth = 1, color = "grey30", alpha = 0.7) +
+  theme_classic(base_size = 16) +
+  theme(plot.title = element_text(color="black", size = 14, face="bold"),
+        legend.position = "right") +
+    #xlab("")+
+  scale_fill_manual(values = c("#FF8100", "#C75BCB", "#057575"))
+```
+:::
+:::
 
-## 
