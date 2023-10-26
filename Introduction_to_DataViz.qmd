@@ -421,11 +421,7 @@ ggplot(penguins, aes(x = species, y = bill_length_mm)) +
 
 ## Bar Plots
 
-<<<<<<< HEAD
 Use `coord_flip()` to flip *x* and *y* axes.
-=======
-Use `coord_flip()` to flip x and y axes.
->>>>>>> d880c6af8090aad38a265961f60058e46bd75e79
 
 ::: columns
 ::: {.column width="50%"}
@@ -479,11 +475,6 @@ ggplot(penguins, aes(x = species, y = bill_length_mm)) +
 
 ::: columns
 ::: {.column width="50%"}
-<<<<<<< HEAD
-=======
-Mapped data set:
-
->>>>>>> d880c6af8090aad38a265961f60058e46bd75e79
 ```{r, box plots}
 #| eval: false
 #| echo: true
